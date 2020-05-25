@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Object Relational Calculus | Principles of Computational Information Science</title>
+  <meta name="description" content="Lectures notes for an introductory course on Computational Information Science." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Object Relational Calculus | Principles of Computational Information Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lectures notes for an introductory course on Computational Information Science." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Object Relational Calculus | Principles of Computational Information Science" />
+  
+  <meta name="twitter:description" content="Lectures notes for an introductory course on Computational Information Science." />
+  
+
+<meta name="author" content="Martin Schedlbauer" />
+
+
+<meta name="date" content="2020-05-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="methods.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="orc.html"><a href="orc.html"><i class="fa fa-check"></i><b>3</b> Object Relational Calculus</a><ul>
+<li class="chapter" data-level="3.1" data-path="orc.html"><a href="orc.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="orc.html"><a href="orc.html#definition-of-an-object-store"><i class="fa fa-check"></i><b>3.2</b> Definition of an Object Store</a></li>
+<li class="chapter" data-level="3.3" data-path="orc.html"><a href="orc.html#retrieval-specification"><i class="fa fa-check"></i><b>3.3</b> Retrieval Specification</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="orc.html"><a href="orc.html#general-form"><i class="fa fa-check"></i><b>3.3.1</b> General Form</a></li>
+<li class="chapter" data-level="3.3.2" data-path="orc.html"><a href="orc.html#restrictions"><i class="fa fa-check"></i><b>3.3.2</b> Restrictions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="orc.html"><a href="orc.html#selections"><i class="fa fa-check"></i><b>3.3.3</b> Selections</a></li>
+<li class="chapter" data-level="3.3.4" data-path="orc.html"><a href="orc.html#existential-quantification"><i class="fa fa-check"></i><b>3.3.4</b> Existential Quantification</a></li>
+<li class="chapter" data-level="3.3.5" data-path="orc.html"><a href="orc.html#universal-quantification"><i class="fa fa-check"></i><b>3.3.5</b> Universal Quantification</a></li>
+<li class="chapter" data-level="3.3.6" data-path="orc.html"><a href="orc.html#joins"><i class="fa fa-check"></i><b>3.3.6</b> Joins</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="orc.html"><a href="orc.html#notes-on-mathematical-notation"><i class="fa fa-check"></i><b>3.4</b> Notes on Mathematical Notation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="orc.html"><a href="orc.html#set-notation"><i class="fa fa-check"></i><b>3.4.1</b> Set Notation</a></li>
+<li class="chapter" data-level="3.4.2" data-path="orc.html"><a href="orc.html#boolean-logic-notation"><i class="fa fa-check"></i><b>3.4.2</b> Boolean Logic Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="orc.html"><a href="orc.html#exercises"><i class="fa fa-check"></i><b>3.5</b> Exercises</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="orc.html"><a href="orc.html#exercise-1"><i class="fa fa-check"></i><b>3.5.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="3.5.2" data-path="orc.html"><a href="orc.html#exercise-2"><i class="fa fa-check"></i><b>3.5.2</b> Exercise 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="6.1" data-path="references.html"><a href="references.html#r-markdown"><i class="fa fa-check"></i><b>6.1</b> R Markdown</a></li>
+<li class="chapter" data-level="6.2" data-path="references.html"><a href="references.html#slide-with-bullets"><i class="fa fa-check"></i><b>6.2</b> Slide with Bullets</a></li>
+<li class="chapter" data-level="6.3" data-path="references.html"><a href="references.html#slide-with-r-output"><i class="fa fa-check"></i><b>6.3</b> Slide with R Output</a></li>
+<li class="chapter" data-level="6.4" data-path="references.html"><a href="references.html#slide-with-plot"><i class="fa fa-check"></i><b>6.4</b> Slide with Plot</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Principles of Computational Information Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="orc" class="section level1">
+<h1><span class="header-section-number">3</span> Object Relational Calculus</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>A database, data store, object store, or knowledge base is simply a collection of information objects. The objects have structure and properties and are often related. The format in which the objects are represented might differ. For example, in a relational database, the objects are organized into tables while in an XML store, the objects are elements delimited by tags. However, their essence is quite the same: a collection of information objects — or simply, objects.</p>
+<p>For example, a datastore might contain information on assets and their owners. So, the datastore is a collection of individual asset objects and owner objects with associations that indicate which assets belongs to which owner. Each object is by itself some structural arrangement of data values called the object’s attributes or data properties. Every asset object might have attributes such as name, acquisition cost, acquisition date, vendor, and depreciation time. In order to distinguish different assets, each asset object must have a unique identifier — its primary key or object ID.</p>
+<p>The calculus described in this chapter is a modernization of the type relational calculus originally created by Edgar F. Codd for the relation model.</p>
+<p>A calculus is a method for reasoning. The object relational calculus is a method for reasoning about object stores and information retrieval from such stores.</p>
+<p>There are many call that pertain to the relational mode, including the tuple relational calculus and the more recent domain relational calculus. Additionally, the relational algebra is a procedural abstraction of queries for relational databases.</p>
+</div>
+<div id="definition-of-an-object-store" class="section level2">
+<h2><span class="header-section-number">3.2</span> Definition of an Object Store</h2>
+<p>This section defines the various elements of an object store using (somewhat) formal definitions with the intent of reducing ambiguity and eventually allowing a language independent specification of information retrieval from a store.</p>
+<hr />
+<blockquote>
+<p><em>Definition: <strong>Class</strong></em></p>
+<p>A class <span class="math inline">\(C\)</span> is a set of object <span class="math inline">\(o_1\)</span>, <span class="math inline">\(o_2\)</span>, <span class="math inline">\(o_3\)</span>, …, <span class="math inline">\(o_n\)</span>, i.e., <span class="math inline">\(C=\{o_1, o_2, o_3, ..., o_n\}\)</span> that have the same properties. All objects with the same properties must be members of the same class. <span class="math inline">\(C\)</span> be the set of objects <span class="math inline">\(o_1\)</span>, <span class="math inline">\(o_2\)</span>, <span class="math inline">\(o_3\)</span>, …, <span class="math inline">\(o_n\)</span>, i.e., <span class="math inline">\(C=\{o_1, o_2, o_3, ..., o_n\}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Object Store</strong></em></p>
+<p>An object store <span class="math inline">\(\mathfrak{S}\)</span> is a collection of classes <span class="math inline">\(C_1, C_2, ..., C_n\)</span> and relations <span class="math inline">\(R_1, R_2, ..., R_n\)</span> between the members of the classes.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Object</strong></em><br />
+<br />
+An object is a single member of a class, i.e., an object <span class="math inline">\(o\)</span> that belongs to class <span class="math inline">\(C\)</span> is denoted either as <span class="math inline">\(o^C\)</span> or <span class="math inline">\(o \in C\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Instance</strong></em><br />
+<br />
+An instance is a specific unique object of a class and is denoted by specifying its unique object identifier and its class, e.g., <span class="math inline">\(o^C_{id}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Tuple</strong></em><br />
+<br />
+A tuple is a set of values, e.g., the tuple <span class="math inline">\(T\)</span> is the set of values <span class="math inline">\((v_1, v_2, ..., v_n)\)</span>. Every object is a tuple. All objects in a class have the same tuple structure.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Object Identifier</strong></em><br />
+<br />
+Objects are distinguished by their identifier, <span class="math inline">\(o_{id}\)</span> which means that if <span class="math inline">\(o_j \in C\)</span> and <span class="math inline">\(o_k \in C\)</span> and if <span class="math inline">\(j = k\)</span>, then <span class="math inline">\(o_j = o_k\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Domain</strong></em><br />
+<br />
+A domain <span class="math inline">\(D\)</span> is the set of values from which a value for an attribute is drawn. A domain can be any infinite set such as <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{Z}\)</span> or a finite set such as <span class="math inline">\(\{T, F\}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Attribute</strong></em><br />
+<br />
+An object is a tuple of attributes <span class="math inline">\((a_1, a_2, ..., a_n)\)</span> defining its structure. Each attribute <span class="math inline">\(o.a_i\)</span> (also known as data property, feature, or dimension) takes on one value at a time from a single domain. In other words, if <span class="math inline">\(o_p\)</span> and <span class="math inline">\(o_q\)</span> are two objects such that <span class="math inline">\(p\neq q\)</span>, then for any attribute <span class="math inline">\(a_i\)</span>, its values must be drawn from the same domain <span class="math inline">\(D\)</span>, i.e., if <span class="math inline">\(o_p.a_i \in D\)</span>, then <span class="math inline">\(o_q.a_i \in D\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Cardinality</strong></em><br />
+<br />
+The cardinality of a class <span class="math inline">\(C\)</span> is the number of objects in the class and is denoted as <span class="math inline">\(|C|\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Relation</strong></em><br />
+<br />
+A relation <span class="math inline">\(R\)</span> is a non-injective function <span class="math inline">\(f\)</span> that maps objects from one class <span class="math inline">\(C_i\)</span> to another class <span class="math inline">\(C_j\)</span>, i.e., <span class="math inline">\(f = R : C_i \to C_j\)</span> where <span class="math inline">\(C_i,C_j \in \mathfrak{S}\)</span>. Since <span class="math inline">\(i\)</span> can equal <span class="math inline">\(j\)</span>, relations can be reflexive.</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Multiplicity</strong></em><br />
+<br />
+The multiplicity of a relation <span class="math inline">\(R\)</span> is the .</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Object Equality</strong></em><br />
+<br />
+The</p>
+</blockquote>
+<blockquote>
+<p><em>Definition: <strong>Object Equivalence</strong></em><br />
+<br />
+The m</p>
+</blockquote>
+<hr />
+</div>
+<div id="retrieval-specification" class="section level2">
+<h2><span class="header-section-number">3.3</span> Retrieval Specification</h2>
+<p>A retrieval from an object store is a logical expression that defines through logical expressions which objects are part of the result set. A results set is an anonymous class of tuples, or simply tuples.</p>
+<p>Let us assume that we have an object store <span class="math inline">\(\mathfrak{S}\)</span> with classes <em>Asset</em> (<span class="math inline">\(A\)</span>) and <em>Owner</em> (<span class="math inline">\(O\)</span>). Furthermore, let us assume that the classes have the following structure in terms of attribute and their domains:</p>
+<pre><code>class Asset {
+     name : TEXT;
+  acqCost : {v : v &gt; 0}
+  acqDate : DATE;
+   vendor : {Hamilton,Bryar,Brix};
+  depTime : {1, 5, 7, 20}
+} </code></pre>
+<pre><code>class Owner {
+     dep : TEXT;
+   phone : TEXT;
+} </code></pre>
+<p>In addition to the above defined attributes for each class, there is an implied object identifier (primary key). It does not have to be explicitly stated. Neither do foreign keys that implement the relationship between <em>Asset</em> and <em>Owner</em>. Let us assume that every asset is owned by exactly one owner. This implies that an asset must have an owner, although some owners may not own any assets. The figure below shows a UML visualization of the ontology.</p>
+<div class="figure">
+<img src="images/AssetOwnerUML.jpg" alt="Figure 1. UML Diagram for Asset Ownership Ontology" />
+<p class="caption">Figure 1. UML Diagram for Asset Ownership Ontology</p>
+</div>
+<p>The diagram above shows that an <em>Asset</em> is owned by exactly one owner and that an <em>Owner</em> can own several assets. The relationship between the two classes represents the <em>Ownership</em> relation.</p>
+<div id="general-form" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> General Form</h3>
+<p>The general format of a retrieval specification (query in database terms) is a set definition. The result of a retrieval is a set. This set is often called the <span class="math inline">\(result set\)</span>, or <span class="math inline">\(rs\)</span>.</p>
+<p><span class="math inline">\(rs=\{x : cond(x)\}\)</span></p>
+<p>where <span class="math inline">\(cond(x)\)</span> is a boolean expression<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>For example, to retrieve all owners from the object store <span class="math inline">\(\mathfrak{S}\)</span>, the following set definition specifies the boolean expressions resulting in the desired result set:</p>
+<p><span class="math inline">\(rs=\{x : x\in Owner\}\)</span></p>
+</div>
+<div id="restrictions" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Restrictions</h3>
+<p>Restrictions are expressed as additional boolean expressions. For example, all assets with an acquisition cost of more than $1,000 and a depreciation time of less than 7 years would be expressed with this set definition:</p>
+<p><span class="math inline">\(rs=\{x : (x\in Asset)\land(x.acqCost \gt 1000)\land(x.depTime \lt 7)\}\)</span></p>
+<p>The set is restricted to all objects that satisfy all conditions, i.e., all objects for which all boolean expressions evaluate <em>true</em>.</p>
+<p>Note that if the expression <span class="math inline">\(x\in Asset\)</span> were missing then <span class="math inline">\(x\)</span> would not be bound to the elements in the <em>Asset</em> class; it would specify all objects from all classes in the object store <span class="math inline">\(\mathfrak{S}\)</span>. This would lead to specification problems as the attributes in the definition would not be necessarily defined for all classes and their domains might differ. For example, two classes might have a name attribute but for one it might be drawn from the <em>TEXT</em> domain while for another it might be drawn from the <em>INTEGER</em> domain.</p>
+<p>Restrictions are similar to predicate expressions in <em>XPath</em> or the <strong>WHERE</strong> clause in SQL.</p>
+</div>
+<div id="selections" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Selections</h3>
+<p>Selecting specific attributes instead of entire objects can be done with tuple specifications. Below is an example where the result set consists of tuples that contain only the <em>name</em> and <em>acqDate</em> attributes of the specified objects:</p>
+<p><span class="math inline">\(rs=\{x.name, x.acqDate : (x\in Asset)\land(x.acqCost \gt 1000)\}\)</span></p>
+</div>
+<div id="existential-quantification" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> Existential Quantification</h3>
+<p>An existential quantifier (<span class="math inline">\(\exists\)</span>) is a special boolean expression that is true if the specified conditions is true for at least some (at least one) objects.</p>
+</div>
+<div id="universal-quantification" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Universal Quantification</h3>
+<p>A universal quantifier (<span class="math inline">\(\forall\)</span>)is a boolean expression that defines a condition that is true for all objects.</p>
+</div>
+<div id="joins" class="section level3">
+<h3><span class="header-section-number">3.3.6</span> Joins</h3>
+<p>A join retrieval specification selects result set tuples where conditions are</p>
+</div>
+</div>
+<div id="notes-on-mathematical-notation" class="section level2">
+<h2><span class="header-section-number">3.4</span> Notes on Mathematical Notation</h2>
+<p>The lecture notes use several notational devices from set theory and Boolean logic that may not be familiar to everyone.</p>
+<div id="set-notation" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Set Notation</h3>
+<p>A set of simply a collection of elements. For example, a book is a collection of pages. Elements must be unique, so a set cannot contain the same element more than once. Often sets are denoted with a capital letter, e.g., <span class="math inline">\(Q\)</span>. Set membership is indicated with the symbol <span class="math inline">\(\in\)</span>.</p>
+<p>Sets can be described in several ways:</p>
+<ul>
+<li><p>By listing the elements:<br />
+<br />
+<span class="math inline">\(HockeyBag = \{skates, elbow pads, helmet, kneepads, gloves\}\)</span></p></li>
+<li><p>By suggesting a pattern:<br />
+<br />
+<span class="math inline">\(evenNums=\{2, 4, 6, ..., 100\}\)</span></p></li>
+<li><p>Using set builder notation:<br />
+<br />
+<span class="math inline">\(evenNums=\{x\in {\mathbb{Z}} : 1 \leq x \leq 100 \space \wedge \space x\mod 2=0\}\)</span></p></li>
+</ul>
+<p>Common pre-defined sets cover numeric sets:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Symbol</th>
+<th align="left">Set</th>
+<th align="center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\mathbb{R}\)</span></td>
+<td align="left">real numbers</td>
+<td align="center">9.1, -0.08, <span class="math inline">\(\pi\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td align="left">integers (whole numbers)</td>
+<td align="center">-10, 0, 8</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\mathbb{Q}\)</span></td>
+<td align="left">rational numbers (fractions)</td>
+<td align="center">9.1 (<span class="math inline">\(9\frac{1}{10})\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\mathbb{N}\)</span></td>
+<td align="left">natural numbers (integers <span class="math inline">\(&gt;\)</span> 0)</td>
+<td align="center">0, 3, 61</td>
+</tr>
+</tbody>
+</table>
+<p>Each of the above sets can be restricted to just positive number by including a <span class="math inline">\(+\)</span> superscript, e.g., <span class="math inline">\(\mathbb{R}^+\)</span>.</p>
+</div>
+<div id="boolean-logic-notation" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Boolean Logic Notation</h3>
+<p>Boolean logic defines expressions that are either <span class="math inline">\(True\)</span> or <span class="math inline">\(False\)</span>.</p>
+<table style="width:25%;">
+<colgroup>
+<col width="6%" />
+<col width="8%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Symbol</th>
+<th align="left">Meaning</th>
+<th align="center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\land\)</span></td>
+<td align="left"><span class="math inline">\(AND\)</span>; only <span class="math inline">\(TRUE\)</span> when both expressions are true</td>
+<td align="center"><span class="math inline">\((x&lt;10) \wedge (x \mod 3=0)\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\lor\)</span></td>
+<td align="left"><span class="math inline">\(OR\)</span>; <span class="math inline">\(TRUE\)</span> when either expression is true</td>
+<td align="center"><span class="math inline">\((x&lt;10) \lor (x \mod 3=0)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">3.5</span> Exercises</h2>
+<div id="exercise-1" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Exercise 1</h3>
+<p>Create retrieval specifications for the object store <span class="math inline">\(\mathfrak{S}\)</span> from this chapter:</p>
+<ol style="list-style-type: decimal">
+<li>Find all assets that are sold by either “Bryar” or “Brix”.</li>
+<li>Find all assets that are owned by “Chris Topher”.</li>
+<li>Find all assets that are owned by “Chris Topher” that cost more than $1,000.</li>
+</ol>
+</div>
+<div id="exercise-2" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Exercise 2</h3>
+<p>Assuming that <em>Asset</em> <span class="math inline">\(\in \mathfrak{S}\)</span>, express the retrieval specification for <span class="math inline">\(rs\)</span> in <em>XPath</em> and in <em>SQL</em>.</p>
+<p><span class="math inline">\(rs=\{x : (x\in Asset)\land(x.acqCost \gt 1000)\land(x.depTime \lt 7)\}\)</span></p>
+<p>What assumptions do you need to make about the relations in the relational database or the element structure in the XML store?</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>A vertical bar is also often used in lieu of the colon to express a set using the set construction syntax, e.g., <span class="math inline">\(rs=\{x | cond(x)\}\)</span><a href="orc.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["IS2000.Manuscript.pdf", "IS2000.Manuscript.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

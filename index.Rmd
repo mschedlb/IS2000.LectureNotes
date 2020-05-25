@@ -1,0 +1,27 @@
+--- 
+title: "Principles of Computational Information Science"
+author: "Martin Schedlbauer"
+date: "`r Sys.Date()`"
+output: pdf_document
+description: Lectures notes for an introductory course on Computational Information
+  Science.
+documentclass: book
+link-citations: yes
+bibliography:
+- bibliography.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+nocite: '@*'
+---
+
+# Prerequisites
+
+This is a _set of lecture notes for Principles of Computational Information Science_ written in **Markdown** and intended for students in Northeastern University's IS2000 course. 
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
