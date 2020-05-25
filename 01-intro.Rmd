@@ -1,3 +1,0 @@
-# Introduction {#intro}
-
-reference @xie2017 and @xie2015.
