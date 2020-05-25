@@ -1,0 +1,3 @@
+# Information Transformation with XSL
+
+Information science as a modern discipline.
